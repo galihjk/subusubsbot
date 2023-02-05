@@ -1,9 +1,9 @@
 <?php
 function proses_addchannel_2($botdata){
     $text = $botdata["text"] ?? "";
+    $chat_id = $botdata["chat"]["id"];
 
     if(f("str_is_diawali")($text,"@")){
-        $chat_id = $botdata["chat"]["id"];
         $userid = $botdata["from"]["id"];
         $getChatMember = f("bot_kirim_perintah")("getChatMember",[
             'chat_id'=>$text,
@@ -25,7 +25,7 @@ function proses_addchannel_2($botdata){
         }
         else{
             $textsend = "<b>PROSES TAMBAH CHANNEL (2/3)</b>\n";
-            $textsend .= "Mau berapa subscriber? Biaya: 1 Koin per subscriber. Channel: $text";
+            $textsend .= "Mau berapa subscriber? Biaya: 1 Koin per subscriber.\nCreator: [$userid]\nChannel: $text";
             f("bot_kirim_perintah")("sendMessage",[
                 "chat_id"=>$chat_id,
                 "text"=>$textsend,
