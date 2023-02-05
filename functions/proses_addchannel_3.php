@@ -3,7 +3,7 @@ function proses_addchannel_3($botdata){
     $text = $botdata["text"] ?? "";
     $chat_id = $botdata["chat"]["id"];
     $channel = explode("Channel: ",$botdata['reply_to_message']['text'])[1];
-    $explode_creator = explode("nCreator: [",$botdata['reply_to_message']['text'])[1];
+    $explode_creator = explode("Creator: [",$botdata['reply_to_message']['text'])[1];
     $creator = explode("]",$explode_creator)[0];
 
     if(is_numeric($text) and $text > 0){
